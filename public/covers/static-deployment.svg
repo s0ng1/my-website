@@ -1,0 +1,19 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#F4EFE8"/>
+  <rect x="56" y="56" width="1088" height="563" rx="32" fill="#FFFDFB" stroke="#E6DACE"/>
+  <rect x="120" y="158" width="308" height="360" rx="28" fill="#2A201D"/>
+  <rect x="158" y="206" width="230" height="22" rx="11" fill="#D3855D"/>
+  <rect x="158" y="260" width="196" height="14" rx="7" fill="#6B5850"/>
+  <rect x="158" y="294" width="212" height="14" rx="7" fill="#6B5850"/>
+  <rect x="158" y="328" width="166" height="14" rx="7" fill="#6B5850"/>
+  <rect x="158" y="392" width="176" height="62" rx="18" fill="#F3E4D8"/>
+  <rect x="542" y="170" width="514" height="318" rx="28" fill="#FFF8F2" stroke="#E8CDBB"/>
+  <path d="M590 240H1006" stroke="#E2C3AE" stroke-width="20" stroke-linecap="round"/>
+  <path d="M590 300H972" stroke="#D07E57" stroke-width="14" stroke-linecap="round"/>
+  <path d="M590 352H1006" stroke="#E2C3AE" stroke-width="14" stroke-linecap="round"/>
+  <path d="M590 404H930" stroke="#E2C3AE" stroke-width="14" stroke-linecap="round"/>
+  <path d="M620 546C742 502 842 486 1088 520" stroke="#D8B39A" stroke-width="30" stroke-linecap="round"/>
+  <text x="542" y="146" fill="#7B5E4E" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="28" letter-spacing="4">DEPLOYMENT</text>
+  <text x="542" y="584" fill="#2B2825" font-family="Songti SC, STSong, serif" font-size="68">静态部署</text>
+  <text x="542" y="640" fill="#6E655D" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="30">围绕 OSS 的默认封面与发布流程</text>
+</svg>

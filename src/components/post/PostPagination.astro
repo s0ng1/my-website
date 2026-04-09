@@ -1,0 +1,50 @@
+---
+import type { PostSummary } from "../../utils/content";
+import { withBase } from "../../utils/paths";
+
+interface Props {
+  previous: PostSummary | null;
+  next: PostSummary | null;
+}
+
+const { previous, next } = Astro.props as Props;
+---
+
+<nav
+  aria-label="文章翻页"
+  class="grid gap-4 border-t border-line/70 pt-10 md:grid-cols-2"
+>
+  <div>
+    {previous ? (
+      <a
+        href={withBase(`/posts/${previous.slug}/`)}
+        class="surface-card block h-full px-6 py-6 transition-transform duration-200 hover:-translate-y-0.5"
+      >
+        <p class="text-xs uppercase tracking-[0.18em] text-muted/80">上一篇</p>
+        <h2 class="mt-3 text-xl leading-8 text-ink">{previous.title}</h2>
+        <p class="mt-2 text-sm leading-7 text-muted">{previous.description}</p>
+      </a>
+    ) : (
+      <div class="surface-card h-full px-6 py-6 text-sm text-muted">
+        已经是最早的一篇文章。
+      </div>
+    )}
+  </div>
+
+  <div>
+    {next ? (
+      <a
+        href={withBase(`/posts/${next.slug}/`)}
+        class="surface-card block h-full px-6 py-6 transition-transform duration-200 hover:-translate-y-0.5"
+      >
+        <p class="text-xs uppercase tracking-[0.18em] text-muted/80">下一篇</p>
+        <h2 class="mt-3 text-xl leading-8 text-ink">{next.title}</h2>
+        <p class="mt-2 text-sm leading-7 text-muted">{next.description}</p>
+      </a>
+    ) : (
+      <div class="surface-card h-full px-6 py-6 text-sm text-muted">
+        已经是最新的一篇文章。
+      </div>
+    )}
+  </div>
+</nav>

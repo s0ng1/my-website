@@ -1,0 +1,17 @@
+---
+import { withBase } from "../../utils/paths";
+
+interface Props {
+  slug: string;
+  label: string;
+}
+
+const { slug, label } = Astro.props as Props;
+---
+
+<a
+  href={withBase(`/categories/${slug}/`)}
+  class="subtle-chip px-3.5 hover:border-accent/35 hover:text-accent"
+>
+  {label}
+</a>

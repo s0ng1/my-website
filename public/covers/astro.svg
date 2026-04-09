@@ -1,0 +1,12 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#F6F1EB"/>
+  <rect x="56" y="56" width="1088" height="563" rx="32" fill="#FFFDFB" stroke="#E6D9CC"/>
+  <circle cx="928" cy="184" r="116" fill="#F3E4D8"/>
+  <circle cx="928" cy="184" r="70" fill="#D28A62"/>
+  <path d="M302 196C374 138 452 110 562 110C650 110 714 128 792 176" stroke="#C47745" stroke-width="20" stroke-linecap="round"/>
+  <path d="M286 364C364 290 444 254 550 254C650 254 734 286 816 352" stroke="#E7C3A8" stroke-width="26" stroke-linecap="round"/>
+  <path d="M248 506C340 430 456 394 584 394C694 394 804 420 938 500" stroke="#D9B39A" stroke-width="34" stroke-linecap="round"/>
+  <text x="110" y="156" fill="#7B5E4E" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="28" letter-spacing="4">ASTRO</text>
+  <text x="110" y="252" fill="#2B2825" font-family="Songti SC, STSong, serif" font-size="74">内容结构与静态路由</text>
+  <text x="110" y="332" fill="#6E655D" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="30">为个人博客准备的默认分类封面</text>
+</svg>

@@ -1,0 +1,52 @@
+---
+import type { PostSummary } from "../../utils/content";
+import { withBase } from "../../utils/paths";
+import { formatDate } from "../../utils/date";
+import { resolvePostCover } from "../../utils/media";
+import CategoryBadge from "../taxonomy/CategoryBadge.astro";
+
+interface Props {
+  post: PostSummary;
+}
+
+const { post } = Astro.props as Props;
+const cover = resolvePostCover(post);
+---
+
+<article class="surface-card card-lift h-full px-6 py-7">
+  <a href={withBase(`/posts/${post.slug}/`)} class="block overflow-hidden rounded-[1.4rem] border border-line/70 bg-surface-soft">
+    <img
+      src={withBase(cover.src)}
+      alt={cover.alt}
+      class="aspect-video w-full object-cover"
+      loading="lazy"
+    />
+  </a>
+
+  <div class="flex flex-wrap items-center gap-2.5">
+    <CategoryBadge slug={post.category} label={post.categoryLabel} />
+    <p class="text-[0.8125rem] leading-6 text-muted/85">
+      {formatDate(post.pubDate)}
+    </p>
+  </div>
+
+  <h3 class="clamp-2 mt-5 text-[1.45rem] leading-8">
+    <a
+      href={withBase(`/posts/${post.slug}/`)}
+      class="transition-colors duration-200 hover:text-accent"
+    >
+      {post.title}
+    </a>
+  </h3>
+
+  <p class="clamp-3 mt-4 text-[0.98rem] leading-7 text-muted">{post.description}</p>
+
+  <div class="mt-6">
+    <a
+      href={withBase(`/posts/${post.slug}/`)}
+      class="text-sm font-medium text-accent transition-colors duration-200 hover:text-ink"
+    >
+      阅读全文
+    </a>
+  </div>
+</article>

@@ -1,0 +1,36 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props as Props;
+const filteredHeadings = headings.filter(
+  (heading) => heading.depth === 2 || heading.depth === 3,
+);
+---
+
+{filteredHeadings.length > 1 && (
+  <aside class="surface-card px-5 py-5 md:px-6">
+    <p class="text-[0.8125rem] font-semibold tracking-[0.16em] text-muted">
+      本页目录
+    </p>
+    <ol class="mt-4 space-y-2.5">
+      {filteredHeadings.map((heading) => (
+        <li class:list={[heading.depth === 3 && "pl-4"]}>
+          <a
+            href={`#${heading.slug}`}
+            class="block text-[0.875rem] leading-6 text-muted transition-colors duration-200 hover:text-accent"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </aside>
+)}

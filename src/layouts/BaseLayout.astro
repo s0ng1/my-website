@@ -1,0 +1,63 @@
+---
+import "../styles/global.css";
+import "../styles/prose.css";
+import SeoHead from "../components/common/SeoHead.astro";
+import SiteHeader from "../components/layout/SiteHeader.astro";
+import SiteFooter from "../components/layout/SiteFooter.astro";
+import { siteConfig } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  pathname?: string;
+  image?: string;
+  noindex?: boolean;
+  mainClass?: string;
+  type?: "website" | "article";
+  publishedTime?: Date;
+  modifiedTime?: Date;
+}
+
+const {
+  title,
+  description = siteConfig.siteDescription,
+  pathname = Astro.url.pathname,
+  image,
+  noindex = false,
+  mainClass = "",
+  type = "website",
+  publishedTime,
+  modifiedTime,
+} = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang={siteConfig.lang} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SeoHead
+      title={title}
+      description={description}
+      pathname={pathname}
+      image={image}
+      noindex={noindex}
+      type={type}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+    />
+  </head>
+  <body>
+    <div class="relative isolate flex min-h-screen flex-col overflow-x-hidden">
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[28rem] bg-[radial-gradient(circle_at_top,rgba(204,116,66,0.16),transparent_60%)]"
+      ></div>
+      <SiteHeader />
+      <main class:list={["flex-1", mainClass]}>
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

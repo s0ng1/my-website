@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/layout/Container.astro";
+import SectionTitle from "../../components/common/SectionTitle.astro";
+import PostCard from "../../components/post/PostCard.astro";
+import { getCategoryGroups, getCategoryGroup } from "../../utils/content";
+
+export async function getStaticPaths() {
+  const groups = await getCategoryGroups();
+
+  return groups.map((group) => ({
+    params: { category: group.slug },
+  }));
+}
+
+const { category } = Astro.params;
+const group = category ? await getCategoryGroup(category) : null;
+
+if (!group) {
+  return Astro.redirect("/404/");
+}
+---
+
+<BaseLayout
+  title={`${group.label} 分类`}
+  description={group.description}
+  pathname={`/categories/${group.slug}/`}
+>
+  <section class="py-16 md:py-20">
+    <Container>
+      <div class="space-y-8">
+        <SectionTitle
+          eyebrow="Category"
+          title={group.label}
+          description={`${group.description} 当前共 ${group.count} 篇文章。`}
+        />
+
+        <div class="grid gap-5 md:grid-cols-2">
+          {group.posts.map((post) => (
+            <PostCard post={post} />
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

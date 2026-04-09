@@ -1,0 +1,34 @@
+---
+import type { CategoryGroup } from "../../utils/content";
+import { withBase } from "../../utils/paths";
+
+interface Props {
+  groups: CategoryGroup[];
+}
+
+const { groups } = Astro.props as Props;
+---
+
+<div class="grid gap-5 md:grid-cols-2">
+  {groups.map((group) => (
+    <article class="surface-card px-6 py-7">
+      <div class="flex items-center justify-between gap-4">
+        <h2 class="text-2xl">
+          <a
+            href={withBase(`/categories/${group.slug}/`)}
+            class="transition-colors duration-200 hover:text-accent"
+          >
+            {group.label}
+          </a>
+        </h2>
+        <span class="rounded-full bg-surface-soft px-3 py-1 text-sm text-muted">
+          {group.count} 篇
+        </span>
+      </div>
+      <p class="mt-3 text-sm leading-7 text-muted">{group.description}</p>
+      <p class="mt-6 text-xs uppercase tracking-[0.18em] text-muted/80">
+        slug: {group.slug}
+      </p>
+    </article>
+  ))}
+</div>

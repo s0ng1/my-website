@@ -1,0 +1,37 @@
+---
+import Container from "./Container.astro";
+import { siteConfig } from "../../data/site";
+import { withBase } from "../../utils/paths";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line/70 bg-surface-soft/70">
+  <Container class="flex flex-col gap-6 py-10 md:flex-row md:items-end md:justify-between">
+    <div class="space-y-2">
+      <p class="text-sm font-semibold text-ink">{siteConfig.siteTitle}</p>
+      <p class="max-w-md text-sm leading-7 text-muted">
+        {siteConfig.siteSubtitle}
+      </p>
+      <p class="text-xs text-muted/80">
+        © {year} {siteConfig.siteTitle}. Built with Astro.
+      </p>
+    </div>
+
+    <div class="space-y-3 text-sm text-muted">
+      <div class="flex flex-wrap justify-start gap-x-4 gap-y-2 md:justify-end">
+        {siteConfig.navigation.map((item) => (
+          <a
+            href={withBase(item.href)}
+            class="transition-colors duration-200 hover:text-accent"
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+      <p class="text-xs text-muted/80 md:text-right">
+        社交入口预留在后续阶段补充，当前版本优先收敛基础结构。
+      </p>
+    </div>
+  </Container>
+</footer>

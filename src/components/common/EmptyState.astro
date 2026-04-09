@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props as Props;
+---
+
+<div class="surface-card px-7 py-10 text-center md:px-10 md:py-12">
+  <h2 class="text-2xl leading-tight md:text-3xl">{title}</h2>
+  <p class="mx-auto mt-4 max-w-xl text-base leading-8 text-muted">
+    {description}
+  </p>
+</div>

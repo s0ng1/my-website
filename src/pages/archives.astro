@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/layout/Container.astro";
+import EmptyState from "../components/common/EmptyState.astro";
+import SectionTitle from "../components/common/SectionTitle.astro";
+import ArchiveList from "../components/taxonomy/ArchiveList.astro";
+import { getArchiveGroups } from "../utils/content";
+
+const groups = await getArchiveGroups();
+---
+
+<BaseLayout title="归档">
+  <section class="py-16 md:py-20">
+    <Container>
+      <div class="space-y-8">
+        <SectionTitle
+          eyebrow="Archives"
+          title="归档"
+          description="按年份聚合全部已发布文章，方便从时间维度回看写作记录。"
+        />
+        {groups.length > 0 ? (
+          <ArchiveList groups={groups} />
+        ) : (
+          <EmptyState
+            title="还没有归档内容"
+            description="当文章进入 posts collection 后，这里会自动按年份展示归档结构。"
+          />
+        )}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

@@ -1,0 +1,46 @@
+---
+import { withBase } from "../../utils/paths";
+
+interface Props {
+  title: string;
+  description: string;
+  buttonLabel: string;
+  buttonHref: string;
+}
+
+const { title, description, buttonLabel, buttonHref } = Astro.props as Props;
+const heroImage = withBase("/hero/home-hero.svg");
+---
+
+<section class="relative overflow-hidden rounded-[2rem] border border-line/70 bg-[#231c19] text-white shadow-[0_28px_60px_-36px_rgba(27,19,14,0.55)]">
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 bg-cover bg-center"
+    style={`background-image: url('${heroImage}')`}
+  ></div>
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,13,11,0.78)_0%,rgba(17,13,11,0.62)_38%,rgba(17,13,11,0.36)_68%,rgba(17,13,11,0.26)_100%)]"
+  ></div>
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0)_28%,rgba(0,0,0,0.06)_100%)]"
+  ></div>
+
+  <div class="relative min-h-[26rem] px-7 py-10 md:min-h-[32rem] md:px-10 md:py-14 lg:min-h-[36rem] lg:px-14 lg:py-16">
+    <div class="max-w-[40rem] space-y-6">
+      <h1 class="max-w-[32rem] text-[2.5rem] leading-[1.12] text-white md:text-[3.55rem]">
+        {title}
+      </h1>
+      <p class="max-w-[40rem] text-[1.02rem] leading-8 text-white/82 md:text-[1.1rem]">
+        {description}
+      </p>
+      <a
+        href={buttonHref}
+        class="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 text-sm font-medium text-[#241b17] transition-colors duration-200 hover:bg-[#f3e4d8] hover:text-accent"
+      >
+        {buttonLabel}
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/layout/Container.astro";
+import HomeHero from "../components/home/HomeHero.astro";
+import SectionTitle from "../components/common/SectionTitle.astro";
+import FeaturedPostCard from "../components/home/FeaturedPostCard.astro";
+import LatestPostGrid from "../components/home/LatestPostGrid.astro";
+import { getHomepagePosts } from "../utils/content";
+import { withBase } from "../utils/paths";
+
+const { featuredPost, latestPosts } = await getHomepagePosts();
+const heroHref = featuredPost
+  ? withBase(`/posts/${featuredPost.slug}/`)
+  : withBase("/archives/");
+---
+
+<BaseLayout title="首页">
+  <section class="py-16 md:py-20">
+    <Container>
+      <div class="space-y-14">
+        <HomeHero
+          title="把技术写作留在安静、克制、可长期维护的静态博客里。"
+          description="这里记录 Astro、静态部署与前端工程里的实践笔记。首页 Hero 保持强视觉但少信息，让真正重要的阅读入口落回文章本身。"
+          buttonLabel="开始阅读"
+          buttonHref={heroHref}
+        />
+
+        {featuredPost && (
+          <section class="space-y-6">
+            <SectionTitle
+              eyebrow="Featured Post"
+              title="精选文章"
+              description="优先使用 frontmatter 中的 featured:true；如果没有，则自动回退到最新一篇。"
+            />
+            <FeaturedPostCard post={featuredPost} />
+          </section>
+        )}
+
+        <section class="space-y-6">
+          <SectionTitle
+            eyebrow="Latest Posts"
+            title="最新文章"
+            description="列表自动按发布时间降序排列，并排除已经出现在精选区的文章。"
+          />
+          <LatestPostGrid posts={latestPosts} />
+        </section>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

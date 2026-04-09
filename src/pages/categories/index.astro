@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/layout/Container.astro";
+import EmptyState from "../../components/common/EmptyState.astro";
+import SectionTitle from "../../components/common/SectionTitle.astro";
+import CategoryGrid from "../../components/taxonomy/CategoryGrid.astro";
+import { getCategoryGroups } from "../../utils/content";
+
+const groups = await getCategoryGroups();
+---
+
+<BaseLayout title="分类">
+  <section class="py-16 md:py-20">
+    <Container>
+      <div class="space-y-8">
+        <SectionTitle
+          eyebrow="Categories"
+          title="分类"
+          description="v1 以分类作为唯一聚合维度。这里展示所有已发布文章的真实分类和对应文章数量。"
+        />
+        {groups.length > 0 ? (
+          <CategoryGrid groups={groups} />
+        ) : (
+          <EmptyState
+            title="还没有可展示的分类"
+            description="当第一批文章写入 Markdown 后，这里会自动展示分类分组与文章数量。"
+          />
+        )}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

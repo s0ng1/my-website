@@ -1,0 +1,16 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#F5F0EA"/>
+  <rect x="56" y="56" width="1088" height="563" rx="32" fill="#FFFDFB" stroke="#E8DBCF"/>
+  <path d="M126 492C238 404 348 360 488 360C638 360 750 404 878 500" stroke="#D8AE92" stroke-width="28" stroke-linecap="round"/>
+  <path d="M180 420C274 344 378 306 500 306C632 306 734 346 852 430" stroke="#F0D6C3" stroke-width="22" stroke-linecap="round"/>
+  <path d="M238 350C318 292 402 264 500 264C606 264 692 290 786 352" stroke="#C97B54" stroke-width="16" stroke-linecap="round"/>
+  <rect x="772" y="138" width="250" height="330" rx="32" fill="#FFF6EF" stroke="#E7C9B4"/>
+  <rect x="820" y="188" width="152" height="18" rx="9" fill="#D0825D"/>
+  <rect x="820" y="238" width="132" height="14" rx="7" fill="#DFC0AB"/>
+  <rect x="820" y="272" width="118" height="14" rx="7" fill="#DFC0AB"/>
+  <rect x="820" y="306" width="144" height="14" rx="7" fill="#DFC0AB"/>
+  <rect x="820" y="356" width="108" height="44" rx="14" fill="#F3E5DA"/>
+  <text x="112" y="152" fill="#7B5E4E" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="28" letter-spacing="4">CSS NOTES</text>
+  <text x="112" y="236" fill="#2B2825" font-family="Songti SC, STSong, serif" font-size="72">中文阅读与排版</text>
+  <text x="112" y="306" fill="#6E655D" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="30">留白、层级、代码块与文章节奏</text>
+</svg>

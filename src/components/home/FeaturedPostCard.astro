@@ -1,0 +1,61 @@
+---
+import type { PostSummary } from "../../utils/content";
+import { withBase } from "../../utils/paths";
+import { formatDate } from "../../utils/date";
+import { resolvePostCover } from "../../utils/media";
+import CategoryBadge from "../taxonomy/CategoryBadge.astro";
+
+interface Props {
+  post: PostSummary;
+}
+
+const { post } = Astro.props as Props;
+const cover = resolvePostCover(post);
+---
+
+<article class="surface-card card-lift overflow-hidden md:grid md:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
+  <div class="px-7 py-8 md:px-10 md:py-10">
+    <div class="flex flex-wrap items-center gap-2.5">
+      <span class="eyebrow">Featured</span>
+      <CategoryBadge slug={post.category} label={post.categoryLabel} />
+      <p class="text-[0.8125rem] leading-6 text-muted/85">{formatDate(post.pubDate)}</p>
+    </div>
+
+    <div class="mt-6 max-w-3xl space-y-4">
+      <h3 class="clamp-2 text-3xl leading-tight md:text-[2.4rem]">
+        <a
+          href={withBase(`/posts/${post.slug}/`)}
+          class="transition-colors duration-200 hover:text-accent"
+        >
+          {post.title}
+        </a>
+      </h3>
+      <p class="clamp-3 text-base leading-8 text-muted md:text-[1.05rem]">
+        {post.description}
+      </p>
+    </div>
+
+    <div class="mt-7 flex flex-wrap items-center gap-4">
+      <a href={withBase(`/posts/${post.slug}/`)} class="soft-button">
+        阅读这篇文章
+      </a>
+      {post.updatedDate && (
+        <p class="text-[0.8125rem] leading-6 text-muted/85">
+          最近更新：{formatDate(post.updatedDate)}
+        </p>
+      )}
+    </div>
+  </div>
+
+  <a
+    href={withBase(`/posts/${post.slug}/`)}
+    class="block border-t border-line/70 bg-surface-soft md:border-l md:border-t-0"
+  >
+    <img
+      src={withBase(cover.src)}
+      alt={cover.alt}
+      class="aspect-video h-full w-full object-cover md:aspect-auto"
+      loading="lazy"
+    />
+  </a>
+</article>

@@ -1,0 +1,41 @@
+---
+import type { ArchiveGroup } from "../../utils/content";
+import { formatDate } from "../../utils/date";
+import { withBase } from "../../utils/paths";
+
+interface Props {
+  groups: ArchiveGroup[];
+}
+
+const { groups } = Astro.props as Props;
+---
+
+<div class="space-y-8">
+  {groups.map((group) => (
+    <section class="surface-card px-6 py-7 md:px-8">
+      <div class="flex items-end justify-between gap-4 border-b border-line/70 pb-4">
+        <h2 class="text-3xl leading-tight">{group.year}</h2>
+        <p class="text-sm text-muted">{group.count} 篇文章</p>
+      </div>
+
+      <ol class="mt-5 space-y-4">
+        {group.posts.map((post) => (
+          <li class="flex flex-col gap-2 rounded-2xl border border-line/60 bg-surface-soft px-4 py-4 md:flex-row md:items-start md:justify-between md:gap-6">
+            <div class="min-w-0">
+              <a
+                href={withBase(`/posts/${post.slug}/`)}
+                class="text-lg leading-8 text-ink transition-colors duration-200 hover:text-accent"
+              >
+                {post.title}
+              </a>
+              <p class="mt-1 text-sm leading-7 text-muted">{post.description}</p>
+            </div>
+            <div class="shrink-0 text-sm text-muted">
+              {formatDate(post.pubDate)}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</div>

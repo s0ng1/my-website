@@ -1,0 +1,31 @@
+---
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  width?: "default" | "narrow" | "wide";
+  class?: string;
+}
+
+const {
+  as = "div",
+  width = "default",
+  class: className = "",
+} = Astro.props as Props;
+
+const widthClassMap = {
+  default: "max-w-layout",
+  narrow: "max-w-reading",
+  wide: "max-w-7xl",
+};
+
+const Tag = as;
+---
+
+<Tag
+  class:list={[
+    "mx-auto w-full px-4 sm:px-6 lg:px-8",
+    widthClassMap[width],
+    className,
+  ]}
+>
+  <slot />
+</Tag>

@@ -1,0 +1,98 @@
+@tailwind components;
+
+@layer components {
+  .prose-article {
+    @apply max-w-reading text-ink;
+    font-size: 1.02rem;
+    line-height: 2.02rem;
+  }
+
+  .prose-article h1,
+  .prose-article h2,
+  .prose-article h3,
+  .prose-article h4 {
+    @apply scroll-mt-24 font-serif tracking-tight text-ink;
+  }
+
+  .prose-article h1 {
+    @apply mb-6 mt-0 text-4xl leading-tight md:text-5xl;
+  }
+
+  .prose-article h2 {
+    @apply mb-5 mt-16 text-3xl leading-tight md:text-[2.15rem];
+  }
+
+  .prose-article h3 {
+    @apply mb-4 mt-12 text-[1.65rem] leading-tight;
+  }
+
+  .prose-article h4 {
+    @apply mb-4 mt-10 text-xl leading-tight;
+  }
+
+  .prose-article p,
+  .prose-article ul,
+  .prose-article ol,
+  .prose-article blockquote,
+  .prose-article pre,
+  .prose-article table {
+    @apply my-7;
+  }
+
+  .prose-article a {
+    @apply text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent;
+  }
+
+  .prose-article p + p {
+    @apply mt-6;
+  }
+
+  .prose-article ul {
+    @apply list-disc pl-6;
+  }
+
+  .prose-article ol {
+    @apply list-decimal pl-6;
+  }
+
+  .prose-article li {
+    @apply my-2;
+  }
+
+  .prose-article blockquote {
+    @apply rounded-3xl border border-line/80 bg-surface-soft px-6 py-5 text-[0.98rem] leading-8 text-muted;
+  }
+
+  .prose-article :not(pre) > code {
+    @apply rounded-md bg-surface-soft px-1.5 py-1 font-mono text-accent;
+    font-size: 0.95em;
+  }
+
+  .prose-article pre {
+    @apply overflow-x-auto rounded-3xl border border-line/80 p-5 text-sm text-white;
+    background-color: #241f1a;
+    line-height: 1.75;
+    tab-size: 2;
+  }
+
+  .prose-article pre code {
+    @apply bg-transparent p-0 text-inherit;
+  }
+
+  .prose-article hr {
+    @apply my-10 border-line/70;
+  }
+
+  .prose-article table {
+    @apply w-full border-collapse overflow-hidden rounded-3xl border border-line/80 bg-surface text-left text-sm;
+  }
+
+  .prose-article th,
+  .prose-article td {
+    @apply border-b border-line/70 px-4 py-3 align-top;
+  }
+
+  .prose-article img {
+    @apply rounded-3xl border border-line/70;
+  }
+}

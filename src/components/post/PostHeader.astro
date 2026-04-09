@@ -1,0 +1,53 @@
+---
+import CategoryBadge from "../taxonomy/CategoryBadge.astro";
+import { formatDate } from "../../utils/date";
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  category: string;
+  categoryLabel: string;
+  tags?: string[];
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  category,
+  categoryLabel,
+  tags = [],
+} = Astro.props as Props;
+---
+
+<header class="space-y-8 border-b border-line/70 pb-10">
+  <div class="flex flex-wrap items-center gap-3">
+    <CategoryBadge slug={category} label={categoryLabel} />
+    <p class="text-sm leading-6 text-muted">发布于 {formatDate(pubDate)}</p>
+    {updatedDate && (
+      <p class="text-sm leading-6 text-muted">更新于 {formatDate(updatedDate)}</p>
+    )}
+  </div>
+
+  <div class="space-y-5">
+    <h1 class="max-w-4xl text-[2.6rem] leading-[1.14] md:text-[3.35rem]">
+      {title}
+    </h1>
+    <p class="max-w-3xl text-[1.05rem] leading-8 text-muted md:text-[1.12rem]">
+      {description}
+    </p>
+  </div>
+
+  {tags.length > 0 && (
+    <div class="flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span class="subtle-chip">
+          #{tag}
+        </span>
+      ))}
+    </div>
+  )}
+</header>
